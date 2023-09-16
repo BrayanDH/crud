@@ -1,5 +1,5 @@
 <mat-card class="example-card">
-  <img loading="lazy" [src]="url" [alt]="data.name" />
+  <img *ngIf="url" [ngSrc]="url" width="200" height="200" [alt]="data.name" />
   <mat-card-content>
     <mat-card-title> {{ data.name }}</mat-card-title>
   </mat-card-content>
