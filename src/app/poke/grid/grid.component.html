@@ -1,11 +1,16 @@
 <app-navbar></app-navbar>
 
 <mat-grid-list cols="4">
-  <mat-grid-tile>
-    <app-card></app-card>
+  <mat-grid-tile *ngFor="let item of dataList">
+    <app-card [data]="item"></app-card>
   </mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
 </mat-grid-list>
+
+<div class="btns-container">
+  <a [disabled]="page === 0" (click)="previousPage()" mat-fab color="primary">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </a>
+  <a (click)="nextPage()" mat-fab color="accent">
+    <mat-icon>arrow_forward_ios</mat-icon>
+  </a>
+</div>

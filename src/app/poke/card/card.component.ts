@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PokeService } from 'src/app/services/poke.service';
 
 @Component({
   selector: 'app-card',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
 })
 export class CardComponent {
 
+  @Input() 
+  data: any = {};
+
+  url: string = ""
+
+  constructor(private pokeService: PokeService) {
+   }
+
+  ngOnInit(): void { 
+    this.pokeService.getDetails(this.data.name).subscribe((result: any) => {
+      this.url = result.sprites.front_default;
+    });
+  }
+
 }
+
+
